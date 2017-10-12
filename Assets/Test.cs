@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class Test : MonoBehaviour {
 	
-	[SerializeField]
-	private Vector2 _pt=new Vector2(0,0);
+	public  List<Vector2> points=new List<Vector2> { new Vector2(0,0),new Vector2(1,1),new Vector2(1,0) };
 
-	public Vector2 point{
-		get { return _pt; }
-		set { _pt=value; }
-	}
+	
 
 
 }
