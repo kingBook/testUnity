@@ -15,6 +15,11 @@ public class MyEditor : Editor {
 	}
 
 	private void OnSceneGUI() {
+		if(Event.current.type==EventType.MouseDrag){
+			
+		}else{
+			
+		}
 		HandleUtility.Repaint();
 		Vector2 mousePos=Event.current.mousePosition;
 		mousePos=HandleUtility.GUIPointToWorldRay(mousePos).origin;
@@ -36,8 +41,6 @@ public class MyEditor : Editor {
 				nearestLine[1]=p2;
 			}
 		}
-
-		Handles.lighting=true;
 		
 		for(int i=0;i<count;i++){
 			Vector2 p1=_points[i];
@@ -47,7 +50,9 @@ public class MyEditor : Editor {
 			Handles.DrawLine(p1,p2);
 		}
 		
-		Vector2 perp=getPerpendicularPt(mousePos.x,mousePos.y,nearestLine[0].x,nearestLine[0].y,nearestLine[1].x,nearestLine[1].y);
+
+		//设置控制柄到最近线段的垂线
+		/*Vector2 perp=getPerpendicularPt(mousePos.x,mousePos.y,nearestLine[0].x,nearestLine[0].y,nearestLine[1].x,nearestLine[1].y);
 		float perpToNearestLineSegment=HandleUtility.DistancePointToLineSegment(perp,nearestLine[0],nearestLine[1]);
 		if(perpToNearestLineSegment>0.01f){
 			float d0=Vector2.Distance(perp,nearestLine[0]);
@@ -55,7 +60,7 @@ public class MyEditor : Editor {
 			if(d0<d1)perp.Set(nearestLine[0].x,nearestLine[0].y);
 			else perp.Set(nearestLine[1].x,nearestLine[1].y);
 		}
-		_test.point.Set(perp.x,perp.y);
+		_test.point.Set(perp.x,perp.y);*/
 
 		//绘制文本框
 		Handles.Label(_test.point,string.Format("({0},{1})",_test.point.x,_test.point.y));
@@ -69,7 +74,7 @@ public class MyEditor : Editor {
 			_test.point=newPoint;
 		}
 		
-		//Debug.Log(Event.current);
+		
 		
 	}
 
