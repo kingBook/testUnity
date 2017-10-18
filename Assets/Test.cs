@@ -8,7 +8,10 @@ public class Test : MonoBehaviour {
 
 	public Vector2 point=new Vector2();
 
-	
+	private void OnEnable() {
+		
+	}
+
 
 
 }
